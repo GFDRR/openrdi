@@ -111,16 +111,12 @@ def dns():
     sudo('echo "nameserver 4.2.2.2" >> /etc/resolv.conf')
 
 
-def gitsetup():
-    sudo('apt-get install -y git-core')
-    put('id_rsa', '.ssh/id_rsa')
-    put('id_rsa.pub', '.ssh/id_rsa.pub')
- 
-
 def ariel():
     """Setup dev env for Ariel
     """
-    gitsetup()
+    sudo('apt-get install -y git-core')
+    put('id_rsa', '.ssh/id_rsa')
+    put('id_rsa.pub', '.ssh/id_rsa.pub')
     run('git config --global user.name "Ariel Nunez"')
     run('git config --global user.email ingenieroariel@gmail.com')
 
@@ -128,6 +124,8 @@ def ariel():
 def robert():
     """Setup dev env for Robert
     """
-    gitsetup()
+    sudo('apt-get install -y git-core')
+    put('id_dsa', '.ssh/id_dsa')
+    put('id_dsa.pub', '.ssh/id_dsa.pub')
     run('git config --global user.name "Robert Soden"')
     run('git config --global user.email robert.soden@gmail.com')
