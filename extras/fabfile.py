@@ -12,17 +12,17 @@ def vagrant():
     result = local('vagrant ssh_config | grep IdentityFile', capture=True)
     env.key_filename = result.split()[1]
 
-def africaopenrdi():
+def openrdiopenrdi():
     env.user = 'ubuntu'
-    env.hosts = ['africa.openrdi.org']
+    env.hosts = ['openrdi.openrdi.org']
     env.key_filename = 'geonode-gfdrr-labs.pem'
 
 def install():
-    """Install africa and it's dependencies
+    """Install openrdi and it's dependencies
     """
-    run('wget https://github.com/GFDRR/africa/raw/master/scripts/africa-install')
+    run('wget https://github.com/GFDRR/openrdi/raw/master/scripts/openrdi-install')
     run('echo "source ~/venv/bin/activate" >> .bash_aliases')
-#    run('bash africa-install')
+    run('bash openrdi-install')
 
 def production():
     """Install and configure Apache and Tomcat
@@ -30,13 +30,13 @@ def production():
     ctx = dict(user=env.user, host=env.host, project_home='/home/%s' % env.user)
     upload_template('project.apache', 'project.apache', context=ctx)
     sudo('apt-get install -y libapache2-mod-wsgi')
-    sudo('/bin/mv -f project.apache /etc/apache2/sites-available/africa')
-    sudo('ln -sf /etc/default/geonode %s/africa/africa/local_settings.py' % ctx['project_home'])
+    sudo('/bin/mv -f project.apache /etc/apache2/sites-available/openrdi')
+    sudo('ln -sf /etc/default/geonode %s/openrdi/openrdi/local_settings.py' % ctx['project_home'])
     sudo('a2dissite default')
-    sudo('a2ensite africa')
+    sudo('a2ensite openrdi')
     sudo('a2enmod proxy_http')
     run('mkdir -p logs')
-    run('. venv/bin/activate; africa collectstatic --noinput')
+    run('. venv/bin/activate; openrdi collectstatic --noinput')
     sudo('/etc/init.d/apache2 restart')
 
 def manual():
@@ -51,7 +51,7 @@ def manual():
     print "        django-admin.py createsuperuser"
 
 
-def africa():
+def openrdi():
     """Do a full production setup of Haitidata
     """
 
@@ -60,7 +60,7 @@ def africa():
     manual()
 
 def stop():
-    """Stop africa
+    """Stop openrdi
     """
 
     sudo('service tomcat6 stop')
@@ -70,7 +70,7 @@ def stop():
 #    sudo('killall -9 java')
 
 def start():
-    """Start africa
+    """Start openrdi
     """
 
     run('source venv/bin/activate;django-admin.py syncdb --noinput')
@@ -78,7 +78,7 @@ def start():
     sudo('service apache2 start')
 
 def restart():
-    """Restart africa
+    """Restart openrdi
     """
 
     stop()
@@ -88,9 +88,9 @@ def pull():
     """Pull the latest changes of the codebase from github and reload the server
     """
 
-    run('cd africa; git pull')
+    run('cd openrdi; git pull')
     run('cd geonode; git pull')
-    run('touch africa/extras/project.wsgi')
+    run('touch openrdi/extras/project.wsgi')
 
 def log():
     """Handy way to check the logs

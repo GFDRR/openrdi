@@ -2,17 +2,15 @@ GeoNode site to monitor the East Africa Droughts.
 
 The quick and dirty way to install this is to do:
 
-wget https://github.com/GFDRR/africa/raw/master/scripts/africa-install
-bash africa-install
+wget https://github.com/GFDRR/openrdi/raw/master/scripts/openrdi-install
+bash openrdi-install
 
 Below is a guide to develop the site using Vagrant virtual machines:
 
 #0. Install vagrant and fabric
-#1. git clone git@github.com:GFDRR/africa.git
+#1. git clone git@github.com:GFDRR/openrdi.git
 #2. cd extras; vagrant up
 #3. Put your id_rsa and id_rsa.pub file in the extras folder so you can access github.
 #4. Modify fabfile.py adding a task to configure your user (check the ariel one for reference)
 #5. fab vagrant ariel install
 #7. vagrant ssh
-#8. bash africa-install
-   
