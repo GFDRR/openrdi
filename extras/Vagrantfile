@@ -1,0 +1,10 @@
+Vagrant::Config.run do |config|
+
+  config.vm.box = "lucid32"
+
+  # Forward a port from the guest to the host, which allows for outside
+  # computers to access the VM, whereas host only networking does not.
+  config.vm.forward_port "tomcat", 8001, 8001
+  config.vm.forward_port "http", 8000, 8000
+
+end
