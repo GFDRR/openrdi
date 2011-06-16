@@ -1,4 +1,4 @@
-WSGIDaemonProcess africa user=%(user)s threads=1 processes=5 python-path=%(project_home)s/venv/lib/python2.6/site-packages
+WSGIDaemonProcess openrdi user=%(user)s threads=1 processes=5 python-path=%(project_home)s/venv/lib/python2.6/site-packages
 <VirtualHost *:80>
    ServerAdmin anunezgomez@worldbank.org
    ServerName %(host)s
@@ -15,8 +15,8 @@ WSGIDaemonProcess africa user=%(user)s threads=1 processes=5 python-path=%(proje
        Allow from all
    </Directory>
 
-   Alias /static/ "%(project_home)s/africa/africa/static/"
-   <Directory "%(project_home)s/africa/africa/static/">
+   Alias /static/ "%(project_home)s/openrdi/openrdi/static/"
+   <Directory "%(project_home)s/openrdi/openrdi/static/">
      Order allow,deny
      Options Indexes FollowSymLinks
      Allow from all
@@ -27,8 +27,8 @@ WSGIDaemonProcess africa user=%(user)s threads=1 processes=5 python-path=%(proje
        Allow from all
    </Proxy>
 
-   WSGIProcessGroup africa
-   WSGIScriptAlias / %(project_home)s/africa/extras/project.wsgi
+   WSGIProcessGroup openrdi
+   WSGIScriptAlias / %(project_home)s/openrdi/extras/project.wsgi
    WSGIPassAuthorization On
  
    ProxyPass /geoserver-geonode-dev http://localhost:8080/geoserver-geonode-dev
