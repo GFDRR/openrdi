@@ -12,9 +12,9 @@ def vagrant():
     result = local('vagrant ssh_config | grep IdentityFile', capture=True)
     env.key_filename = result.split()[1]
 
-def openrdiopenrdi():
+def openrdiorg():
     env.user = 'ubuntu'
-    env.hosts = ['openrdi.openrdi.org']
+    env.hosts = ['openrdi.org']
     env.key_filename = 'geonode-gfdrr-labs.pem'
 
 def install():

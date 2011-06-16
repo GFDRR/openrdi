@@ -1,0 +1,5 @@
+*.pyc
+*.~
+extras/geonode-gfdrr-labs.pem
+extras/id_rsa
+extras/id_rsa.pub
