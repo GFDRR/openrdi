@@ -1,0 +1,79 @@
+#!/bin/bash
+sudo apt-get update
+sudo apt-get install -y --force-yes openjdk-6-jre-headless
+sudo apt-get install -y vim zip unzip subversion git-core binutils build-essential python-dev python-setuptools python-imaging python-reportlab gdal-bin libproj-dev libgeos-dev python-urlgrabber python-scipy python-nose pep8 python-virtualenv python-gdal python-pastescript gettext libpq-dev postgresql-contrib
+
+
+echo ">>>> Downloading components required for installation."
+mkdir -p downloaded
+cd downloaded
+wget -c "https://s3.amazonaws.com/geonodeariel/geoserver-geonode-dev.war"
+wget -c "https://s3.amazonaws.com/geonodeariel/geonetwork.war"
+wget -c "https://s3.amazonaws.com/geonodeariel/tomcat.zip"
+wget -c "https://s3.amazonaws.com/geonodeariel/geonode-client.zip"
+cd ..
+
+if [ ! -d "./tomcat" ]; then
+    echo ">>>> Unpacking fresh tomcat."
+    unzip downloaded/tomcat.zip
+fi
+
+echo ">>>> Installing geoserver and geonetwork in tomcat."
+rm -rf tomcat/webapps/geoserver-geonode-dev*
+rm -rf tomcat/webapps/geonetwork*
+cp downloaded/geoserver-geonode-dev.war tomcat/webapps
+cp downloaded/geonetwork.war tomcat/webapps
+
+if [ ! -d "./venv" ]; then
+     echo ">>>> Creating the virtualenv and installing dependencies"
+     virtualenv venv
+     source venv/bin/activate
+     easy_install -U pip
+fi
+
+echo ">>>> Activating the virtualenv"
+source venv/bin/activate
+
+if grep -q DJANGO_SETTINGS_MODULE venv/bin/activate
+then
+    echo
+else
+    echo 'export DJANGO_SETTINGS_MODULE=africa.settings' >> venv/bin/activate
+fi
+
+function checkup() {
+  REPO="$1"
+  WORKING_DIR="$2"
+  if [ -d "${WORKING_DIR}" ];
+  then
+      echo "Updating ${WORKING_DIR} from upstream"
+      (cd "${WORKING_DIR}" && git pull)
+  else
+      git clone "git@github.com:${REPO}" "${WORKING_DIR}" || git clone "https://github.com/${REPO}" "${WORKING_DIR}"
+  fi
+}
+
+echo ">>>> Clone/pull from the specified GeoNode repo and branch"
+checkup GFDRR/geonode.git geonode
+pushd .
+pip install -r geonode/shared/core-libs.txt
+cd geonode/src/GeoNodePy
+python setup.py develop
+popd
+
+
+# After we have installed GeoNode we want to put geonode-client.zip in the right folder
+pushd .
+mkdir -p geonode/src/GeoNodePy/geonode/maps/static
+unzip downloaded/geonode-client.zip -d geonode/src/GeoNodePy/geonode/maps/static/geonode
+popd
+
+echo ">>>> Installing this project in development mode"
+pushd .
+checkup GFDRR/africa.git africa
+pip install -r africa/extras/requirements.txt
+cd africa
+python setup.py develop
+popd
+
+pip install fabric

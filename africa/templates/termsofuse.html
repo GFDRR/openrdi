@@ -1,0 +1,16 @@
+{% extends "page_layout.html" %}
+{% load i18n %}
+{% load flatblock_tags %}
+
+
+{% block title %} {% trans "Terms of use" %} - {{ block.super }} {% endblock %}
+{% block indexclass %} class="here" {% endblock %}
+
+{% block main %} 
+<div class="twocol">
+<!-- TODO: i18n on the text here -->
+  <div class="block">
+       {% flatblock "termsofuse" %}
+  </div>
+</div>
+{% endblock %}
