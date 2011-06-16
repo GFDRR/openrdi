@@ -38,7 +38,7 @@ if grep -q DJANGO_SETTINGS_MODULE venv/bin/activate
 then
     echo
 else
-    echo 'export DJANGO_SETTINGS_MODULE=africa.settings' >> venv/bin/activate
+    echo 'export DJANGO_SETTINGS_MODULE=openrdi.settings' >> venv/bin/activate
 fi
 
 function checkup() {
@@ -70,9 +70,9 @@ popd
 
 echo ">>>> Installing this project in development mode"
 pushd .
-checkup GFDRR/africa.git africa
-pip install -r africa/extras/requirements.txt
-cd africa
+checkup GFDRR/openrdi.git openrdi
+pip install -r openrdi/extras/requirements.txt
+cd openrdi
 python setup.py develop
 popd
 
