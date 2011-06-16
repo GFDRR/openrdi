@@ -5,10 +5,10 @@ def read(*rnames):
     return open(os.path.join(os.path.dirname(__file__), *rnames)).read()
 
 setup(
-    name="africa",
+    name="openrdi",
     version="0.1",
-    author="Ariel Nunez",
-    author_email="ingenieroariel@gmail.com",
+    author="Ariel Nunez, Robert Soden",
+    author_email="anunezgomez@worldbank.org",
     description="Code behind africa.openrdi.org",
     long_description=(read('README')),
     classifiers=[
@@ -18,9 +18,9 @@ setup(
     ],
     license="BSD",
     keywords="geonode django",
-    url='https://github.com/GFDRR/africa',
+    url='https://github.com/GFDRR/openrdi',
     scripts = [
-               'scripts/africa',
+               'scripts/openrdi',
               ],
     packages=find_packages('.'),
     include_package_data=True,

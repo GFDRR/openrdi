@@ -7,7 +7,7 @@ import geonode
 _ = lambda x: x
 
 DEBUG = True
-SITENAME = "East Africa Droughts"
+SITENAME = "OpenRDI"
 SITEURL = "http://localhost:8000/"
 TEMPLATE_DEBUG = DEBUG
 
@@ -113,7 +113,7 @@ LOCALE_PATHS = (
     os.path.join(GEONODE_ROOT, 'maps', 'locale'),
 )
 
-ROOT_URLCONF = 'africa.urls'
+ROOT_URLCONF = 'openrdi.urls'
 
 # Note that Django automatically includes the "templates" dir in all the
 # INSTALLED_APPS, se there is no need to add maps/templates or admin/templates
@@ -249,7 +249,7 @@ INSTALLED_APPS = (
     'geonode.core',
     'geonode.maps',
     'geonode.proxy',
-    'africa.core',
+    'openrdi.core',
 )
 
 def get_user_url(u):
@@ -283,7 +283,7 @@ LOGGING = {
             'level':'DEBUG',
             'class' : 'logging.handlers.RotatingFileHandler',
             'formatter': 'verbose',
-            'filename': 'africa.log',
+            'filename': 'openrdi.log',
             'maxBytes': '1024',
             'backupCount': '3',
          },
@@ -318,7 +318,7 @@ AUTH_PROFILE_MODULE = 'maps.Contact'
 REGISTRATION_OPEN = True
 ACCOUNT_ACTIVATION_DAYS = 7
 
-MODELTRANSLATION_TRANSLATION_REGISTRY = "africa.translation"
+MODELTRANSLATION_TRANSLATION_REGISTRY = "openrdi.translation"
 
 DB_DATASTORE = False
 
