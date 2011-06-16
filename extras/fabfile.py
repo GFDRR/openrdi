@@ -21,12 +21,8 @@ def install():
     """Install africa and it's dependencies
     """
     run('wget https://github.com/GFDRR/africa/raw/master/scripts/africa-install')
-    run('bash africa-install')
     run('echo "source ~/venv/bin/activate" >> .bash_aliases')
-    run('echo "export DJANGO_SETTINGS_MODULE=africa.settings" >> .bash_aliases')
-    run('echo "export HAITIDATA_HOME=\"pwd ~\"" >> .bash_aliases')
-    run('rm africa-install')
-    run('rm distribute*')
+#    run('bash africa-install')
 
 def production():
     """Install and configure Apache and Tomcat
