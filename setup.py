@@ -14,10 +14,10 @@ setup(
     classifiers=[
         'Development Status :: 4 - Beta',
         'Framework :: GeoNode',
-        'License :: OSI Approved :: GNU Library or General Public License (GPL)',
+        'License :: OSI Approved :: BSD',
     ],
-    license="GPL 3",
-    keywords="haitidata geonode django",
+    license="BSD",
+    keywords="geonode django",
     url='https://github.com/GFDRR/africa',
     scripts = [
                'scripts/africa',
