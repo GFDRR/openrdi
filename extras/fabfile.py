@@ -12,7 +12,7 @@ def vagrant():
     result = local('vagrant ssh_config | grep IdentityFile', capture=True)
     env.key_filename = result.split()[1]
 
-def africaorg():
+def africaopenrdi():
     env.user = 'ubuntu'
     env.hosts = ['africa.openrdi.org']
     env.key_filename = 'geonode-gfdrr-labs.pem'
