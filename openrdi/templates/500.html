@@ -1,0 +1,19 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+  <title>{% block title %} {{ SITENAME }} {% endblock %}</title>
+  <link rel="shortcut icon" href="/static/theme/img/favicon.ico"/>
+  {% block head %}
+  <link rel="stylesheet" type="text/css" href="/static/theme/boilerplate-min.css" media="screen" />
+  <!--[if lte IE 6]><link rel="stylesheet" href="/static/theme/boilerplate-ie-min.css" type="text/css" media="screen" charset="utf-8"><![endif]-->
+  <link rel="stylesheet" type="text/css" href="/static/theme/site.css" media="screen" />
+  {% endblock %}
+</head>
+<body>
+
+  <div class="onecol">
+    <div id="description"><h3>{% trans "Internal Server Error" %}</h3></div>
+        An internal error occurred. Our administrators have been emailed and will fix the issue as soon as possible.
+        If the problem continues, contact anunezgomez@worldbank.org.
+  </div>
+</body>
