@@ -11,6 +11,10 @@ wget -c "https://s3.amazonaws.com/geonodeariel/geoserver-geonode-dev.war"
 wget -c "https://s3.amazonaws.com/geonodeariel/geonetwork.war"
 wget -c "https://s3.amazonaws.com/geonodeariel/tomcat.zip"
 wget -c "https://s3.amazonaws.com/geonodeariel/geonode-client.zip"
+wget -c "https://s3.amazonaws.com/geonodeariel/gdal1.7.3-linux64-ecw-gcc43.tar.gz"
+wget -c "https://s3.amazonaws.com/geonodeariel/imageio-ext-1.1.0-libraries.zip"
+wget -c "https://s3.amazonaws.com/geonodeariel/jai-1_1_3-lib-linux-amd64-jdk.bin"
+wget -c "https://s3.amazonaws.com/geonodeariel/jdk-6u26-linux-x64.bin"
 cd ..
 
 if [ ! -d "./tomcat" ]; then
