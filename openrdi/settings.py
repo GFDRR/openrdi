@@ -42,7 +42,6 @@ LANGUAGE_CODE = 'en'
 
 LANGUAGES = (
     ('en', 'English'),
-    ('so', 'Somali'),
 )
 
 SITE_ID = 1
@@ -249,6 +248,7 @@ INSTALLED_APPS = (
     'geonode.core',
     'geonode.maps',
     'geonode.proxy',
+    'openrdi.events',
 )
 
 def get_user_url(u):

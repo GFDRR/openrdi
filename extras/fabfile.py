@@ -29,7 +29,7 @@ def production():
     """
     ctx = dict(user=env.user, host=env.host, project_home='/home/%s' % env.user)
     upload_template('project.apache', 'project.apache', context=ctx)
-    sudo('apt-get install -y libapache2-mod-wsgi')
+    sudo('apt-get install -y libapache2-mod-wsgi tomcat6')
     sudo('/bin/mv -f project.apache /etc/apache2/sites-available/openrdi')
     sudo('ln -sf /etc/default/geonode %s/openrdi/openrdi/local_settings.py' % ctx['project_home'])
     sudo('a2dissite default')
@@ -37,7 +37,10 @@ def production():
     sudo('a2enmod proxy_http')
     run('mkdir -p logs')
     run('. venv/bin/activate; openrdi collectstatic --noinput')
-    sudo('/etc/init.d/apache2 restart')
+    sudo('service apache2 restart')
+    sudo('cp downloaded/geoserver-geonode-dev.war /var/lib/tomcat6/webapps/')
+    sudo('cp downloaded/geonetwork.war /var/lib/tomcat6/webapps/')
+    sudo('service tomcat6 start')
 
 def manual():
     """Manual steps, not everything can be automated, but we try.
