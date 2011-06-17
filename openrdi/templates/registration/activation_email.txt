@@ -1,0 +1,11 @@
+{% load i18n %}
+Your account at {{ site.name }} has been created!
+
+{% blocktrans %}The purpose of the site is to facilitate open access to disaster related geo-spatial information, data and knowledge sources, encouraging others to share and use them.{% endblocktrans %}
+
+{% blocktrans %}Once you activate your account, you'll be able to upload updated data and further ones in order to contribute to the project.{% endblocktrans %}
+
+{% blocktrans %}Please click on the following link in order to activate your account:{% endblocktrans %}
+http://{{ site.domain }}{% url registration_activate activation_key %}
+
+{% blocktrans %}Link is valid for {{ expiration_days }} days.{% endblocktrans %}
