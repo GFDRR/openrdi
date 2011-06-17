@@ -60,7 +60,7 @@ MEDIA_ROOT = os.path.join(PROJECT_ROOT, "site_media")
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = "/media/"
+MEDIA_URL = "/static/"
 
 # Absolute path to the directory that holds static files like app media.
 # Example: "/home/media/media.lawrence.com/apps/"
@@ -78,7 +78,7 @@ STATICFILES_DIRS = [
     os.path.join(GEONODE_ROOT, "media"),
 ]
 
-GEONODE_UPLOAD_PATH = os.path.join(STATIC_URL, "upload/")
+GEONODE_UPLOAD_PATH = os.path.join(MEDIA_ROOT, "geonode_upload")
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
@@ -172,14 +172,14 @@ MAP_BASELAYERS = [{
     "source":"any",
     "type":"OpenLayers.Layer.OSM",
     "args":["OpenStreetMap"],
-    "visibility": True,
+    "visibility": False,
     "fixed": True,
     "group":"background"
   },{
     "source":"any",
     "type":"OpenLayers.Layer.WMS",
     "group":"background",
-    "visibility": False,
+    "visibility": True,
     "fixed": True,
     "args":[
       "bluemarble",
@@ -195,7 +195,19 @@ MAP_BASELAYERS = [{
   },{
     "source":"google",
     "group":"background",
+    "name":"TERRAIN",
+    "visibility": False,
+    "fixed": True,
+  },{
+    "source":"google",
+    "group":"background",
     "name":"SATELLITE",
+    "visibility": False,
+    "fixed": True,
+  },{
+    "source":"google",
+    "group":"background",
+    "name":"HYBRID",
     "visibility": False,
     "fixed": True,
 }]

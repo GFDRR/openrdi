@@ -4,7 +4,7 @@
 <div class="twocol">
   <ul>
   {% for object in object_list %}
-    <li>{{ object.title }}</li>
+    <li><a href="{% url event-detail object.slug %}">{{ object.title }}</a></li>
   {% endfor %}
   </ul>
 </div>

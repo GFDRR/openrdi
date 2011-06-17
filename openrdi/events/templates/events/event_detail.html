@@ -1,7 +1,42 @@
 {% extends "page_layout.html" %}
 
+{% block head %}
+{{ block.super }}
+<style>
+#header {
+  background: #fff url({{ object.banner.url }}) repeat-x;
+  font-size: 1.2em;
+}
+
+#logo {
+  width: 550px;
+  background: url({{ object.logo.url }}) no-repeat;
+}
+{% if object.color %}
+  #crossbar {
+    background: {{ object.color.crossbar_background }};
+    color: {{ object.color.crossbar_font }};
+  }
+
+  a {
+    color: {{ object.color.hyperlink }};
+    text-decoration: underline;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: {{ object.color.font }};
+  }
+
+  .help,
+  .secondary {
+    color: {{ object.color.font }};
+  }
+{% endif %}
+</style>
+{% endblock %}
+
 {% block main %}
-<div class="onecol">
+<div class="twocol">
   <h2>{{ object.title }}</h2>
 </div>
 {% endblock %}
