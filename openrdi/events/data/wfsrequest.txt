@@ -1,0 +1,1 @@
+http://50.19.248.19/geoserver-geonode-dev/wfs?typename=geonode%3AKEN_Affected_Regions&outputFormat=SHAPE-ZIP&request=GetFeature&service=WFS
