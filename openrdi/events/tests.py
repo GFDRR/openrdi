@@ -15,11 +15,15 @@ LOGIN_URL=settings.SITEURL + "accounts/login/"
 
 
 class EventsTest(TestCase):
+    fixtures = ['user',]
 
     def test_file_upload(self):
         """
         Tests that a file can be uploaded and associated with an specific event.
         """
-        thefile = os.path.join(TEST_DATA, 'KEN_Affected_Areas.shp')
-        uploaded = file_upload(thefile, workspace='rdrp', overwrite=True)
-        self.assertEqual(1 + 1, 2)
+        event, __ = Event.objects.get_or_create(id=1,
+                        defaults=dict(name='rdrp', domain='rdrp.org', slug='rdrp'))
+        thefile = os.path.join(TEST_DATA, 'KEN_Affected_Regions.shp')
+        uploaded = file_upload(thefile, workspace=event.slug, overwrite=True)
+        
+        self.assertEqual(event.slug, uploaded.workspace)
