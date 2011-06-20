@@ -1,0 +1,28 @@
+[
+    {
+        "pk": 1, 
+        "model": "events.colors", 
+        "fields": {
+            "crossbar_font": "#FF0000", 
+            "crossbar_background": "#FF0000", 
+            "body_font": "#FF0000", 
+            "name": "Brown", 
+            "hyperlink": "#FF0000"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "events.event", 
+        "fields": {
+            "abstract": "The Horn of Africa is suffering from severe drought, with estimates of 8.8 million people currently suffering from acute livelihood crisis (UN-OCHA). This drought, exacerbated by the ongoing food crisis is expected to worsen in the coming 3 to 4 months. This site is a growing repository of data and maps that describes the evolving situation in the region. It was creating using GeoNode, a free and open source tool for data sharing.", 
+            "center_lon": 35.0, 
+            "zoom": 5, 
+            "colors": 1, 
+            "logo": "", 
+            "featured": [], 
+            "banner": "", 
+            "slug": "rdrp", 
+            "center_lat": 10.0
+        }
+    }
+]

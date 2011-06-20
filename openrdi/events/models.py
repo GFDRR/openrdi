@@ -1,7 +1,6 @@
 from django.db import models
 from geonode.maps.models import Map
-
-
+from django.contrib.sites.models import Site
 
 COLOR_HELPFIELD = 'Use "#FF33FF" or "black" '
 class Colors(models.Model):
@@ -14,9 +13,9 @@ class Colors(models.Model):
     def __unicode__(self):
         return self.name
 
-class Event(models.Model):
-    title = models.CharField(max_length=255)
+class Event(Site):
     slug = models.SlugField()
+    abstract = models.TextField()
     banner = models.ImageField(upload_to='events', null=True, blank=True)
     logo = models.ImageField(upload_to='events', null=True, blank=True)
     featured = models.ManyToManyField(Map, null=True, blank=True)
@@ -26,7 +25,7 @@ class Event(models.Model):
     colors = models.ForeignKey(Colors, null=True, blank=True)
 
     def __unicode__(self):
-        return self.title
+        return self.name
 
     @models.permalink
     def get_absolute_url(self):
