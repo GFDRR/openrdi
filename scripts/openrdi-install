@@ -81,3 +81,8 @@ python setup.py develop
 popd
 
 pip install fabric
+
+# Interesting aliases:
+alias freshopenrdi='openrdi clear;openrdi flush --noinput;openrdi start;openrdi syncdb --noinput;openrdi loaddata user'
+alias testopenrdi='openrdi clear;openrdi flush --noinput;openrdi start;openrdi test openrdi.events'
+

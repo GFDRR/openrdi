@@ -3,15 +3,21 @@
 {% block head %}
 {{ block.super }}
 <style>
+
+{% if object.banner %}
 #header {
   background: #fff url({{ object.banner.url }}) repeat-x;
   font-size: 1.2em;
 }
+{% endif %}
 
+{% if object.logo %}
 #logo {
   width: 550px;
   background: url({{ object.logo.url }}) no-repeat;
 }
+{% endif %}
+
 {% if object.color %}
   #crossbar {
     background: {{ object.color.crossbar_background }};
@@ -37,6 +43,19 @@
 
 {% block main %}
 <div class="twocol">
-  <h2>{{ object.title }}</h2>
+  <h2>{{ object.name }}</h2>
+</div>
+{% endblock %}
+
+{% block sidebar %}
+<div class="threecol">
+ <h3>Data</h3>
+  <ul>
+  {% for layer in object.layers %}
+   <li>
+    <a href="{{ layer.get_absolute_url }}">{{ layer.title }}</a>
+   </li>
+  {% endfor %}
+  </ul>
 </div>
 {% endblock %}
