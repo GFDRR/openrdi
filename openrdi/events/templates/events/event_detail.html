@@ -1,4 +1,4 @@
-{% extends "page_layout.html" %}
+{% extends "events/base.html" %}
 
 {% block head %}
 {{ block.super }}
@@ -44,11 +44,31 @@
 {% block main %}
 <div class="twocol">
   <h2>{{ object.name }}</h2>
+  <p>{{ object.abstract }}</p>
+
+  <div class='featuredmaps'>
+   <div class='featuredmap'>
+    {% for map in object.featured %}
+    <iframe style="border: none;" height="300" width="600" src="{{ map.get_absolute_url }}/embed"></iframe>   
+      <h3>{{ map.title }}</h3>
+     <p>{{ map.abstract }}</p>
+    {% endfor %} 
+   </div>
+  </div>
 </div>
 {% endblock %}
 
 {% block sidebar %}
 <div class="threecol">
+ <h3>Maps</h3>
+  <ul>
+  {% for themap in object.maps.all %}
+   <li>
+    <a href="{{ themap.get_absolute_url }}/view">{{ themap.title }}</a>
+   </li>
+  {% endfor %}
+  </ul>
+
  <h3>Data</h3>
   <ul>
   {% for layer in object.layers %}

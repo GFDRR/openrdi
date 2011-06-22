@@ -10,4 +10,7 @@ urlpatterns = patterns('',
             info_dict, 'event-list'),
     (r'^(?P<slug>\w+)/$', 'django.views.generic.list_detail.object_detail',
             info_dict, 'event-detail'),
+    (r'^(?P<slug>\w+)/upload/$', 'openrdi.events.views.upload',
+            {}, 'event-upload'),
+
 )

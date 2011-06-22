@@ -26,7 +26,12 @@ class Event(Site):
 
     @property
     def layers(self):
-        return Layer.objects.filter(typename=self.slug)
+        return Layer.objects.filter(workspace=self.slug)
+
+    @property
+    def featured(self):
+        eventmaps = EventMap.objects.filter(event=self, featured=True)
+        return [x.themap for x in eventmaps]
 
     def __unicode__(self):
         return self.name
@@ -41,4 +46,4 @@ class EventMap(models.Model):
     featured = models.BooleanField(default=False)
 
     def __unicode__(self):
-        return '%s - %s' % (event.slug, themap.title)
+        return '%s - %s' % (self.event.slug, self.themap.title)
