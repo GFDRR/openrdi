@@ -1,11 +1,78 @@
 {% extends "events/base.html" %}
 
+{% block head %}
+{{ block.super }}
+<style>
+#header-featured {
+  width: 600px;
+}
+
+.events-title {
+  margin: 10px 0px 10px 60px;
+}
+
+.event-portfolio {
+   border-top: 1px solid gray; 
+   overflow: hidden;
+   padding: 1.5em 16px 1.5em 0;
+   position: relative;
+}
+
+.event-featured-map {
+   float: left;
+}
+
+.event-side {
+}
+
+.event-title {
+    font-size: 32px;
+    text-decoration: none;
+    padding-left: 40px;
+    margin-top: 0px;
+    letter-spacing: -2px;
+}
+
+.event-abstract {
+    padding-left: 40px;
+    margin-top: 100px;
+    margin-left: 600px;
+}
+
+</style>
+{% endblock %}
+
 {% block main %}
-<div class="twocol">
-  <ul>
+<div class="onecol">
+  <h1 class="events-title">Events</h1>
   {% for object in object_list %}
-    <li><a href="{% url event-detail object.slug %}">{{ object.name }}</a></li>
+    <div class="event-portfolio">
+     <div class="event-featured-map">
+      {% if object.banner %}
+       <div style="background: #fff url({{ object.banner.url }}) repeat-x;"
+          id="header-featured">
+         <div class="wrap, selfclear">
+        {% if object.logo %}      
+            <a style="width: 100%; background: url({{ object.logo.url }}) no-repeat;"
+               id="logo" href="{{ object.get_absolute_url }}">{{ object.name }}</a>
+        {% endif %}
+        </div>
+      </div>
+      {% endif %}
+      {% for map in object.featured %}
+        {% if forloop.first %}
+        <iframe style="border: none;" height="300" width="600"
+              src="{{ map.get_absolute_url }}/embed"></iframe>
+        {% endif %}
+     </div>
+       {% endfor %}
+     <div class="event-side">
+       <a class="event-title" href="{% url event-detail object.slug %}">{{ object.name }}</a>
+         <div class="event-abstract"><p>{{ object.abstract }}</p></div>
+         <a class="event-title" href="{% url event-detail object.slug %}">http://{{ object.domain }}/</a>
+     </div>
+    </div>
+   </div>
   {% endfor %}
-  </ul>
 </div>
 {% endblock %}

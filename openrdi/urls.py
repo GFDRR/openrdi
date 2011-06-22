@@ -12,10 +12,15 @@ js_info_dict = {
     'packages': ('geonode.maps',),
 }
 
+from openrdi.events.models import Event
+
+info_dict = {
+    'queryset': Event.objects.all(),
+}
+
 urlpatterns = patterns('',
-    # Example:
-    # (r'^geonode/', include('geonode.foo.urls')),
     (r'^(?:index/?)?$', 'geonode.views.index'),
+    (r'^events/', include('openrdi.events.urls')),
     (r'^(?P<page>help)/?$', 'geonode.views.static'),
     (r'^developer/?$', 'geonode.views.developer'),
     (r'^termsofuse/$', direct_to_template, {  'template': 'termsofuse.html' }),
