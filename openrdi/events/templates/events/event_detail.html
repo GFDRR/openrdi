@@ -18,24 +18,29 @@
 }
 {% endif %}
 
-{% if object.color %}
-  #crossbar {
-    background: {{ object.color.crossbar_background }};
-    color: {{ object.color.crossbar_font }};
+{% if object.colors %}
+  #header {
+    border-bottom: 2px solid {{ object.colors.crossbar_background }};
   }
 
-  a {
-    color: {{ object.color.hyperlink }};
+  #crossbar {
+    background: {{ object.colors.crossbar_background }};
+    color: {{ object.colors.crossbar_font }};
+    border-bottom: 2px solid {{ object.colors.crossbar_background }};
+  }
+
+  .threecol a {
+    color: {{ object.colors.hyperlink }};
     text-decoration: underline;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    color: {{ object.color.font }};
+    color: {{ object.colors.body_font }};
   }
 
   .help,
   .secondary {
-    color: {{ object.color.font }};
+    color: {{ object.colors.body_font }};
   }
 {% endif %}
 </style>
