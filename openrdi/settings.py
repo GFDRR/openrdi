@@ -162,12 +162,12 @@ LOGIN_REDIRECT_URL = "/"
 DEFAULT_LAYERS_OWNER='admin'
 
 # Where should newly created maps be focused?
-DEFAULT_MAP_CENTER = (-72.784423828125, 18.989414715239334)
+DEFAULT_MAP_CENTER =  (35, 10)
 
 # How tightly zoomed should newly created maps be?
 # 0 = entire world;
 # maximum zoom is between 12 and 15 (for Google Maps, coverage varies by area)
-DEFAULT_MAP_ZOOM = 8
+DEFAULT_MAP_ZOOM = 5
 
 MAP_BASELAYERSOURCES = {
     "any": {
