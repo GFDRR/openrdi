@@ -1,7 +1,38 @@
 {% extends "events/base.html" %}
 
 {% block head %}
+{% include "geonode/ext_header.html" %}
 {{ block.super }}
+<script type="text/javascript">
+Ext.onReady(function(){
+{% autoescape off %}
+
+  var exploreMapButton = new Ext.Button({
+     renderTo: 'explore_map', 
+     text: "Explore Maps",
+     handler: function(){ window.location = "{% url geonode.maps.views.maps_search_page %}"; }
+  });
+
+  var createMapButton = new Ext.Button({
+     renderTo: 'create_map', 
+     text: "Create Map",
+     handler: function(){ window.location = "{% url geonode.maps.views.newmap %}"; }
+  });
+
+  var submitForm = function() {
+      Ext.query('#data_block form')[0].submit();
+  };
+
+  var searchButton = new Ext.Button({renderTo: 'submit_search', text: "Search",
+                                     handler: submitForm});
+
+  var searchInput = new Ext.form.TextField({applyTo: 'search_query', width: 200});
+
+{% endautoescape %}
+});
+</script>
+
+
 <style>
 
 {% if object.banner %}
@@ -74,6 +105,15 @@
   {% endfor %}
   </ul>
 
+<!--added button-->
+  <div class="block">
+    <div class="selfclear">
+      <div id="explore_map" class="content-button"></div>
+      <div id="create_map" class="content-button"></div>
+    </div>
+  </div>
+<!--finish added button part-->
+
  <h3>Data</h3>
   <ul>
   {% for layer in object.layers %}
@@ -82,5 +122,27 @@
    </li>
   {% endfor %}
   </ul>
+
+  <div id="data_block" class="block">
+    <!-- Data search text box and button -->
+    <form action="{% url search %}" method="POST">
+      {% csrf_token %}
+        <table>
+          <tr>
+            <td>
+              <input type="text" id="search_query" name="q"/>
+            </td>
+            <td>
+              <div id="submit_search"></div>
+            </td>
+          </tr>
+        </table>
+        <a href="{% url search %}">Advanced Search</a>
+    </form>
+  
+    <!-- Links to specialized views of data -->
+    <!-- Upload data button (link?) -->
+    <a class="layer-upload-link" href="{% url geonode.maps.views.upload_layer%}">Upload data</a>
+  </div>
 </div>
 {% endblock %}
