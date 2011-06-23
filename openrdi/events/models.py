@@ -24,6 +24,9 @@ class Event(Site):
     zoom = models.SmallIntegerField(default = 15)
     colors = models.ForeignKey(Colors, null=True, blank=True)
 
+    class Meta:
+        ordering = ['id']
+
     @property
     def layers(self):
         return Layer.objects.filter(workspace=self.slug)
