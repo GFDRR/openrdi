@@ -83,12 +83,12 @@ Ext.onReady(function(){
 {% block main %}
 <div class="twocol">
   <h2>{{ object.name }}</h2>
-  <p>{{ object.abstract }}</p>
+  <p>{{ object.abstract|safe }}</p>
 
   <div class='featuredmaps'>
    <div class='featuredmap'>
     {% for map in object.featured %}
-    <iframe style="border: none;" height="300" width="600" src="{{ map.get_absolute_url }}/embed"></iframe>   
+    <iframe style="border: none;" height="500" width="600" src="{{ map.get_absolute_url }}/embed"></iframe>   
       <h3>{{ map.title }}</h3>
      <p>{{ map.abstract }}</p>
     {% endfor %} 
@@ -108,26 +108,22 @@ Ext.onReady(function(){
   {% endfor %}
   </ul>
 
+
 <!--added button-->
+<!--
   <div class="block">
     <div class="selfclear">
       <div id="explore_map" class="content-button"></div>
       <div id="create_map" class="content-button"></div>
     </div>
   </div>
+-->
 <!--finish added button part-->
 
  <h3>Data</h3>
-  <ul>
-  {% for layer in object.layers %}
-   <li>
-    <a href="{{ layer.get_absolute_url }}">{{ layer.title }}</a>
-   </li>
-  {% endfor %}
-  </ul>
 
+<!--
   <div id="data_block" class="block">
-    <!-- Data search text box and button -->
     <form action="{% url search %}" method="POST">
       {% csrf_token %}
         <table>
@@ -142,10 +138,20 @@ Ext.onReady(function(){
         </table>
         <a href="{% url search %}">Advanced Search</a>
     </form>
-  
+  -->
     <!-- Links to specialized views of data -->
     <!-- Upload data button (link?) -->
-    <a class="layer-upload-link" href="{% url geonode.maps.views.upload_layer%}">Upload data</a>
+
+  <ul>
+  {% for layer in object.layers %}
+   <li>
+    <a href="{{ layer.get_absolute_url }}">{{ layer.title }}</a>
+   </li>
+  {% endfor %}
+  </ul>
+{% if user.is_authenticated %}
+    <a class="layer-upload-link" href="{% url event-upload object.slug %}">Upload data</a>
+{% endif %}
   </div>
 </div>
 {% endblock %}

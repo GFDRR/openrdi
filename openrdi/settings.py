@@ -124,6 +124,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.redirects.middleware.RedirectFallbackMiddleware',
 )
 
 # This isn't required for running the geonode site, but it when running sites that inherit the geonode.settings module.
@@ -271,6 +272,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.staticfiles',
+    'django.contrib.redirects',
     'django_extensions',
     'registration',
     'profiles',
@@ -347,7 +349,7 @@ ABSOLUTE_URL_OVERRIDES = {
 }
 
 AUTH_PROFILE_MODULE = 'maps.Contact'
-REGISTRATION_OPEN = True
+REGISTRATION_OPEN = False
 ACCOUNT_ACTIVATION_DAYS = 7
 
 MODELTRANSLATION_TRANSLATION_REGISTRY = "openrdi.translation"

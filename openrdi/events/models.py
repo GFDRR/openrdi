@@ -16,8 +16,12 @@ class Colors(models.Model):
 class Event(Site):
     slug = models.SlugField()
     abstract = models.TextField()
-    banner = models.ImageField(upload_to='events', null=True, blank=True)
-    logo = models.ImageField(upload_to='events', null=True, blank=True)
+    preview = models.ImageField(upload_to='events', null=True, blank=True,
+               help_text='600x350')
+    banner = models.ImageField(upload_to='events', null=True, blank=True,
+               help_text='1600x50')
+    logo = models.ImageField(upload_to='events', null=True, blank=True,
+               help_text='600x50')
     maps = models.ManyToManyField(Map, null=True, blank=True, through='EventMap')
     center_lat = models.FloatField(default = 0)
     center_lon = models.FloatField(default = 0)

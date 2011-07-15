@@ -19,7 +19,8 @@ info_dict = {
 }
 
 urlpatterns = patterns('',
-    (r'^(?:index/?)?$', 'geonode.views.index'),
+#    (r'^$', 'django.views.generic.simple.redirect_to', {'url': '/events/'}, 'index'),
+    (r'^$', direct_to_template, {'template': 'index.html'},'index'),
     (r'^events/', include('openrdi.events.urls')),
     (r'^(?P<page>help)/?$', 'geonode.views.static'),
     (r'^developer/?$', 'geonode.views.developer'),
