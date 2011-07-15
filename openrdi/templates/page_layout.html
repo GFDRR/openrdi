@@ -14,6 +14,12 @@
     #logo {
         width: 600px;
     }
+    #header {
+        background: none;
+    }
+    #login-area a {
+       color: #000;
+    }
   </style>
   {% endblock %}
 </head>
@@ -36,7 +42,7 @@
     <div class="wrap selfclear">             
       {% block nav %}
     <ul id="sitenav" class="selfclear">
-        <li class="home"><a href="{% url index %}">{% trans "Events" %}</a></li> 
+        <li class="home"><a href="{% url event-list %}">{% trans "Events" %}</a></li> 
 {% block optionalmenu %}
         <li class=""><a class="" id="dataLink" href="{% url geonode.maps.views.browse_data %}">{% trans "Data" %}</a></li>
         <li class=""><a class="" id="mapsLink" href="{% url geonode.maps.views.maps %}">{% trans "Maps" %}</a></li>
