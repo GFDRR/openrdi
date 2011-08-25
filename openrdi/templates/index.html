@@ -1,28 +1,45 @@
+
+<!doctype html>
 <html>
 <head>
-<link href='http://fonts.googleapis.com/css?family=Istok+Web&v2' rel='stylesheet' type='text/css'>
-<style>
-body { 
-text-align: center; 
-font-family: 'Istok Web', sans-serif;
-font-size: 18px;
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Open DRI - The Open Data for Resilience Initiative</title>
+<link href="/static/opendri/css/style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="/static/opendri/scripts/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="/static/opendri/scripts/jquery.fancybox-1.3.4.pack.js"></script>
+<script type="text/javascript" src="/static/opendri/scripts/jquery.easing-1.3.pack.js"></script>
+<script type="text/javascript" src="/static/opendri/scripts/jquery.mousewheel-3.0.4.pack.js"></script>
+<link rel="stylesheet" href="/static/opendri/css/jquery.fancybox-1.3.4.css" type="text/css" media="screen">
+<script type="text/javascript" src="/static/opendri/scripts/custom.js"></script>
+<script type="text/javascript">
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
 }
-
-#logo {
-text-align: justify; 
-width: 650px; 
-height: 500px; 
-background: white; 
-padding: 50px; 
-margin: 0 auto; 
-}
-
-</style>
+</script>
 </head>
 <body>
-<div id='logo'>
-<img src="{{ STATIC_URL }}theme/img/openrdi.png" alt="openrdi" />
-<p>This website is in private beta at the moment.  OpenRDI is a global partnership that seeks to increase resilience by facilitating the sharing of disaster and climate change data.  For information about the initiative, please send us a note at <a href="mailto:info@openrdi.org">info@openrdi.org</a></p>
+<div id="content">
+      <h5><a name="top-spacer" id="top-spacer"></a></h5>
+      <h5><img src="/static/opendri/images/open_dri_logo.png" class="logo" alt="OPEN DRI"></h5>
+      <p>The Open Data for Resilience Initiative (OpenDRI) seeks to promote data sharing and provide support to decision making in order to build resilience to disasters in a changing climate. It is a dynamic partnership between private companies, academic institutions, and governments that achieves this by the development of tools and a participatory approach to technical assistance.</p>
+      <p>The initiative is the result of the first policy recommendation of the joint World Bank - UN report, <a href='http://www.gfdrr.org/gfdrr/NHUD-home'>&quot;Natural Hazards, UnNatural Disasters, the Economics of Effective Prevention&quot;</a>, which stressed the importance of data sharing to reduce vulnerabilities to disaster. </p>
+      <p>OpenDRI also builds upon the <a href='http://data.worldbank.org'>World Bank's Open Data Initiative</a>. The motivation of the Bank's broader open data initiative is to promote transparency, accountability, and availability of data to support improved decision making. OpenDRI is currently implementing these ideas in 25 countries around the world to improve disaster and climate change resilience. Our full public launch will be in April 2012. Read on for examples of our projects.</p>
+    <div id='casestudies'>  
+      <div class='casestudy'>
+      <h5>Sharing data to rebuild Haiti</h5>
+      <a class="single_image" href="images/haitidataorg_blue.png"><img src="/static/opendri/images/case_haiti.jpg" alt="Haiti"></a>
+       <p>An example of OpenDRI in action is <a href='http://haitidata.org'>haitidata.org</a>. This website is built using a free and open source software tool, GeoNode, and makes risk assessment data produced following the 2010 Haiti earthquake available for anyone to download and use. This tool enables individuals and organizations to contribute data, thereby enabling people to collaborate and and utilize these data required to rebuild Haiti.</p>
+       </div>
+      <div class='casestudy'>
+         <h5>Climate and Disaster Proofing the Pacific</h5>
+         <a class="single_image" href="images/sopac_big.jpg"><img src="/static/opendri/images/case_pasific.jpg"></a>
+         <p>The Pacific Catastrophe Risk Assessment and Financing Initiative (PCRAFI) provides multi-hazard risk assessments for 15 countries in the region. Risk assessment results show the geographic distribution of hazards, assets at risk, and potential losses that can be used to prioritize Disaster Risk Management interventions. This data is now being released to the public as part of an PCRAFI OpenDRI partnership with the South Pacific Applied GeoScience Commission (SOPAC) division of Secretariat of the Pacific Community (SPC). SOPAC hosts and manages this information at <a href='http://geonode.sopac.org'>http://geonode.sopac.org</a>.</p>
+    </div>
+<div id ='footer'>
+<img src="/static/opendri/images/thre_footer_logos.png" alt="WB and GFDRR Labs Logos">
+</div>
 </div>
 </body>
 </html>
